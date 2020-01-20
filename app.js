@@ -53,4 +53,4 @@ app.post('/failure', (req, res) => {
   res.redirect('/')
 })
 
-app.listen(process.env.PORT, () => {console.log(`Srv running on ${port}`)})
+app.listen(port, () => {console.log(`Srv running on ${port}`)})

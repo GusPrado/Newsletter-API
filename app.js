@@ -39,12 +39,15 @@ app.post('/', (req, res) => {
 
   request(options, (error, response, body) => {
     if (error || response.statusCode !== 200) {
-      res.send('Something went wrong')
+      res.sendFile(__dirname + '/failure.html')
     } else if (response.statusCode === 200) {
-      res.send('You got it')
+      res.sendFile(__dirname + '/success.html')
     }
   })
+})
 
+app.post('/failure', (req, res) => {
+  res.redirect('/')
 })
 
 app.listen(3000, () => {console.log('Srv running on 3000')})

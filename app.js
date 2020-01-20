@@ -1,8 +1,11 @@
 const express = require('express')
 const bodyParser = require('body-parser')
 const request = require('request')
+require('dotenv/config')
 
 const app = express()
+
+const port = process.env.PORT || 3000
 
 app.use(bodyParser.urlencoded({ extended: true }))
 app.use(express.static('public'))
@@ -29,12 +32,12 @@ app.post('/', (req, res) => {
   const jsonData = JSON.stringify(data)
 
   const options = {
-    url: 'https://us4.api.mailchimp.com/3.0/lists/3204c478e3/',
+    url: process.env.API_URL,
     method: 'POST',
     headers: {
-      'Authorization': 'gusprado f03096a52430875dda79ca75b90715eb-us4'
+      'Authorization': process.env.API_AUTH_KEY
     },
-    //body: jsonData
+    body: jsonData
   }
 
   request(options, (error, response, body) => {
@@ -50,7 +53,4 @@ app.post('/failure', (req, res) => {
   res.redirect('/')
 })
 
-app.listen(3000, () => {console.log('Srv running on 3000')})
-
-// key: f03096a52430875dda79ca75b90715eb-us4
-// id: 3204c478e3
+app.listen(process.env.PORT, () => {console.log(`Srv running on ${port}`)})

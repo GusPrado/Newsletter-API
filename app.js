@@ -32,10 +32,10 @@ app.post('/', (req, res) => {
   const jsonData = JSON.stringify(data)
 
   const options = {
-    url: process.env.API_URL,
+    url: 'https://us4.api.mailchimp.com/3.0/lists/3204c478e3/',
     method: 'POST',
     headers: {
-      'Authorization': process.env.API_AUTH_KEY
+      'Authorization': 'gusprado f03096a52430875dda79ca75b90715eb-us4'
     },
     body: jsonData
   }

@@ -32,10 +32,10 @@ app.post('/', (req, res) => {
   const jsonData = JSON.stringify(data)
 
   const options = {
-    url: API_URL,
+    url: process.env.API_URL,
     method: 'POST',
     headers: {
-      'Authorization': API_AUTH_KEY
+      'Authorization': process.env.API_AUTH_KEY
     },
     body: jsonData
   }
